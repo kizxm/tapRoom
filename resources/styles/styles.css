@@ -1,0 +1,46 @@
+.box{
+  border-bottom: solid 1px #000;
+  border-top: solid 1px #000;
+  border-right: solid 2px #000;
+  border-left: solid 2px #000;
+  padding: 10px;
+  text-align:left;
+  width: inherit;
+  margin-top: 15px;
+}
+
+
+.color {
+  background-color: "#e6d7f2";
+}
+
+.weak {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.medium {
+  font-size: 17px;
+  font-weight: normal;
+}
+
+.strong {
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.lowPints {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+  animation-name: flash;
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
+@keyframes flash {
+    from {color: pink;}
+    to {color: black;}
+}
