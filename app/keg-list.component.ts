@@ -4,7 +4,14 @@ import { Keg } from './keg.model';
 @Component({
   selector: 'keg-list',
   template: `
-  <div *ngFor="let currentKeg of childKegList">
+
+  <div>
+  <label>Enter a max price: </label>
+  <input #maxPrice>
+    <button (click)="sortKegs(maxPrice.value)">Filter</button>
+  </div>
+
+  <div [class]="priceColor(currentKeg)" *ngFor="let currentKeg of childKegList |priceFilter:filterPriceSender">
   <div class="box">
   <div [class]="inform(currentKeg)"> {{currentKeg.name}} </div>
   <li>Brand: {{currentKeg.brand}}</li>
@@ -19,21 +26,23 @@ import { Keg } from './keg.model';
 })
 
 export class KegListComponent {
+  filterPriceSender: number = -1;
   @Input() childKegList: Keg[];
   @Output() clickSender = new EventEmitter();
 
   editButtonHasBeenClicked(kegToEdit: Keg) {
       this.clickSender.emit(kegToEdit);
     }
-    // priceColor(keg) {
-    //   if (keg.price < 6) {
-    //     return "bg-info";
-    //   } else if (keg.price < 10) {
-    //     return "bg-success";
-    //   } else {
-    //     return "bg-warning";
-    //   }
-    // }
+
+    priceColor(keg) {
+      if (keg.price < 6) {
+        return "bg-info";
+      } else if (keg.price < 10) {
+        return "bg-success";
+      } else {
+        return "bg-warning";
+      }
+    }
 
     getFontSize(currentKeg) {
       if (currentKeg.alcoholContent < 5) {
@@ -57,4 +66,9 @@ export class KegListComponent {
       }
     }
 
+    sortKegs(num: number) {
+      console.log("entered number is " + num);
+      this.filterPriceSender = num;
+      console.log("number is passed" + num);
+    }
 }

@@ -7,13 +7,16 @@ import { Keg } from './keg.model';
   template: `
 <div *ngIf="childSelectedKeg">
   <label>Enter new beer name:</label>
-  <input [(ngModel)]="currentKeg.name">
+  <input [(ngModel)]="childSelectedKeg.name">
+  <br>
+  <label>Enter new beer brand:</label>
+  <input [(ngModel)]="childSelectedKeg.brand">
   <br>
   <label>Enter new beer price:</label>
-  <input [(ngModel)]="currentKeg.price">
+  <input [(ngModel)]="childSelectedKeg.price">
   <br>
   <label>Enter new alcohol content:</label>
-  <input [(ngModel)]="currentKeg.alcoholContent">
+  <input [(ngModel)]="childSelectedKeg.alcoholContent">
   <button (click)="doneButtonClicked()">Done</button>
 </div>
 `
