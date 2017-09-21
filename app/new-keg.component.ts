@@ -4,7 +4,9 @@ import { Keg } from './keg.model';
 @Component({
   selector: 'new-keg',
   template: `
-        <h1> New Keg </h1>
+  <div class="well">
+        <h4>Add a New Keg </h4>
+        <br>
         <div>
         <label> Name: </label>
         <input #newName>
@@ -18,10 +20,13 @@ import { Keg } from './keg.model';
         <input #newPrice>
         </div>
         <div>
-        <label> Alcohol Content: </label>
+        <label> ABV (%): </label>
         <input #newContent>
         </div>
+        <br>
         <button (click)="submitForm(newName.value, newBrand.value, newPrice.value, newContent.value); newName.value=''; newBrand.value=''; newPrice.value = ''; newContent.value='';">Add</button>
+
+        </div>
         `
 })
 

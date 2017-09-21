@@ -1,31 +1,76 @@
 .box{
-  border-bottom: solid 1px #000;
-  border-top: solid 1px #000;
-  border-right: solid 2px #000;
-  border-left: solid 2px #000;
+  border-bottom: solid 8px #90BEF2;
+  border-top: solid 8px #90BEF2;
+  border-right: solid 8px #90BEF2;
+  border-left: solid 8px #90BEF2;
+  border-radius: 10px;
   padding: 10px;
   text-align:left;
-  width: inherit;
+  width: 750px;
   margin-top: 15px;
 }
 
-
-.color {
-  background-color: "#e6d7f2";
+.body {
+  background-image: url("/resources/img/bg1.jpg");
 }
 
+.custom-tooltip {
+    /*display: inline-block;*/
+    display: none;
+    margin: 1px 1px;
+    opacity: 1;
+    position: relative;
+}
+
+.custom-tooltip.top .tooltip-arrow {
+	border-top-color: #000000;
+}
+
+.btn-blue {
+  color: #fff;
+  background-color: #90BEF2;
+  border-color: #6098D6;
+}
+.btn-beer {
+  color: #fff;
+  background-color: #E49429;
+  border-color: #AE7932;
+}
+
+
+.color1 {
+  background-color: #fff2cc;
+  width: 750px;
+  border-radius: 10px;
+}
+
+.color2 {
+  background-color: #E6CC8F;
+  width: 750px;
+  border-radius: 10px;
+}
+
+.color3 {
+  background-color: #D5B087;
+  width: 750px;
+  border-radius: 10px;
+}
+
+.well {
+  width: 750px;
+}
 .weak {
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: normal;
 }
 
 .medium {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: normal;
 }
 
 .strong {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bolder;
 }
 
@@ -41,6 +86,6 @@
     animation-play-state: running;
 }
 @keyframes flash {
-    from {color: pink;}
+    from {color: red;}
     to {color: black;}
 }

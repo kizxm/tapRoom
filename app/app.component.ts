@@ -5,7 +5,7 @@ import { Keg } from './keg.model';
   selector: 'app-root',
   template: `
   <div class="container">
-  <h1><marquee>Tap Room</marquee></h1>
+  <marquee><img src="/resources/img/beer.png"><font size="60px" face="verdana"><b>Tap Room</b></font><img src="/resources/img/beer.png"></marquee>
   <keg-list [childKegList]="masterKegList" (clickSender)="editKeg($event)"></keg-list>
   <hr>
   <edit-keg [childSelectedKeg]="selectedKeg" (doneButtonClickedSender)="finishedEditing()"></edit-keg>
@@ -17,8 +17,8 @@ export class AppComponent {
   selectedKeg: Keg = null;
 
 masterKegList: Keg[] = [
-  new Keg("Hefeweisen", "kateBrand", 11, 8.5),
-  new Keg("Stout", "kiraBrand", 6, 5.3),
+  new Keg("Stout", "kateBrand", 11, 8.5),
+  new Keg("IPA", "kiraBrand", 6, 5.3),
   new Keg("Blond", "perryBrand", 3, 4.3)
 ];
 

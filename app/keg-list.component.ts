@@ -6,22 +6,39 @@ import { Keg } from './keg.model';
   template: `
 
   <div>
-  <label>Enter a max price: </label>
+  <br>
+  <div class="well">
+  <br>
+  <label> Enter a max price: </label>
   <input #maxPrice>
-    <button (click)="sortKegs(maxPrice.value)">Filter</button>
+    <button (click)="sortKegs(maxPrice.value)" class="btn btn-secondary">Filter</button>
+    <br>
+    <br>
+  </div>
   </div>
 
   <div [class]="priceColor(currentKeg)" *ngFor="let currentKeg of childKegList |priceFilter:filterPriceSender">
   <div class="box">
-  <div [class]="inform(currentKeg)"> {{currentKeg.name}} </div>
+
+  <div role="tooltip" class="tooltip top custom-tooltip">
+  	<div class="tooltip-arrow"></div>
+  	<div class="tooltip-inner">Running Low!</div>
+  </div>
+
+
+  <div [class]="inform(currentKeg)"><font size="5"> {{currentKeg.name}} </font></div>
   <li>Brand: {{currentKeg.brand}}</li>
-  <li>Pint Price: $ {{currentKeg.price}}</li>
-  <li [class]="getFontSize(currentKeg)">Content: {{currentKeg.alcoholContent}}%</li>
+  <li [class]="getFontSize(currentKeg)">Pint Price: $ {{currentKeg.price}}</li>
+  <li>Content: {{currentKeg.alcoholContent}}%</li>
   <li>Pints left: {{currentKeg.volume}}</li>
-  <br>
-  <button (click) = "sellAPint(currentKeg)" type="btn">Sell a pint</button>
-  <button (click) = "editButtonHasBeenClicked(currentKeg)" type="btn">Edit</button>
   <hr noshade>
+  <button (click) = "sellAPint(currentKeg)" type="btn"  class="btn btn-blue">Sell a pint</button>
+  <button (click) = "editButtonHasBeenClicked(currentKeg)" type="btn" class="btn btn-beer">Edit</button>
+  </div>
+  </div>
+
+
+
   `
 })
 
@@ -34,26 +51,28 @@ export class KegListComponent {
       this.clickSender.emit(kegToEdit);
     }
 
-    priceColor(keg) {
-      if (keg.price < 6) {
-        return "bg-info";
-      } else if (keg.price < 10) {
-        return "bg-success";
-      } else {
-        return "bg-warning";
-      }
-    }
-
-    getFontSize(currentKeg) {
+    ///..now effects on ABV..///
+    priceColor(currentKeg) {
       if (currentKeg.alcoholContent < 5) {
-        return "weak";
+        return "color1";
       } else if (currentKeg.alcoholContent < 7) {
-        return "medium";
+        return "color2";
       } else {
-        return "strong";
+        return "color3";
       }
     }
 
+
+///..now effects on price..///
+    getFontSize(keg) {
+    if (keg.price < 6) {
+      return "weak";
+    } else if (keg.price < 10) {
+      return "medium";
+    } else {
+      return "strong";
+    }
+    }
       sellAPint(keg) {
         if(keg.volume > 0) {
           keg.volume--;
